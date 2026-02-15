@@ -89,15 +89,22 @@
                 <div class="grid-item" data-project="res-1"><img src="images/res1.jpg" alt=""></div>
                 <div class="grid-item" data-project="res-2"><img src="images/res2.png" alt=""></div>
                 <div class="grid-item" data-project="res-3"><img src="images/res3.jpg" alt=""></div>
-                <div class="grid-item" data-project="res-4"><img src="images/res4.jpg" alt=""></div>
-                <div class="grid-item" data-project="res-5"><img src="images/res5.jpg" alt=""></div>
+                <div class="grid-item" data-project="res-4"><video src="videos/DD670E9C-BEF7-4691-ACE2-EF7A6DFB61E6.MP4" muted loop playsinline autoplay></video></div>
+                <div class="grid-item" data-project="res-5"><video src="videos/5957E952-EDD4-47EB-B572-A7AF899A8446.MP4" muted loop playsinline autoplay></video></div>
                 <div class="grid-item" data-project="res-6"><img src="images/res6.jpg" alt=""></div>
                 <div class="grid-item" data-project="res-7"><img src="images/res7.png" alt=""></div>
-                <div class="grid-item" data-project="res-8"></div>
-                <div class="grid-item" data-project="res-9"></div>
+                <div class="grid-item" data-project="res-8">  <video src="videos/video_2026-02-15_17-56-56.mp4" muted loop playsinline ></video></div>
+                <div class="grid-item" data-project="res-9"><video src="videos/7F4C3CC7-2291-4C39-B25B-2A62CE1A4F9E.MP4" muted loop playsinline ></video></div>
             </div>
         </main>
     </div>
+    <script>
+  document.querySelectorAll(".grid-item video").forEach(video => {
+    video.addEventListener("mouseenter", () => video.play());
+    video.addEventListener("mouseleave", () => video.pause());
+  });
+</script>
+
     <script src="app.js"></script>
 </body>
 

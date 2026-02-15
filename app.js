@@ -15,13 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const projects = {
         'res-1': ['res1.jpg', 'res12.jpg', 'res13.jpg'],
         'res-2': ['res2.png', 'res22.png','res23.png'],
-        'res-3': ['res3.jpg', 'res32.jpg'],
-        'res-4': ['res4.jpg', 'res42.jpg'],
+        'res-3': ['res3.jpg', 'res32.jpg','res33.jpg'],
+        'res-4': ['res41.jpg', 'res42.jpg'],
         'res-5': ['res5.jpg','res52.jpg', 'res53.jpg'],
         'res-6': ['res6.jpg','res62.jpg', 'res63.jpg'],
         'res-7': ['res7.png','res72.jpg', 'res73.jpg'],
+        'res-8': ['res81.jpg','res82.jpg', 'res83.jpg'],
+        'res-9': ['res91.jpg'],
         'com-1': ['com11.jpg'],
         'com-2': ['com22.jpg', 'com23.jpg'],
+        'ren-1': ['ren1.jpg', 'ren12.jpg'],
+        'ren-2': ['ren2.jpg', 'ren22.jpg'],
         'pb-1': ['pb1.jpg'],
         'pb-2': ['pb2.jpg']
     };
