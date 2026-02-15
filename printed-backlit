@@ -86,8 +86,8 @@
             </header>
 
             <div class="image-grid">
-                <div class="grid-item" data-project="pb-1"></div>
-                <div class="grid-item" data-project="pb-2"></div>
+                <div class="grid-item" data-project="pb-1"><img src="images/pb1.jpg" alt=""></div>
+                <div class="grid-item" data-project="pb-2"><img src="images/pb2.jpg" alt=""></div>
                 <div class="grid-item" data-project="pb-3"></div>
             </div>
         </main>
