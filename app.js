@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightbox = document.createElement("div");
   lightbox.className = "lightbox";
   lightbox.innerHTML = `
-        <div class="lightbox-close">Close</div>
+        <div class="lightbox-close">&times;</div>
         <div class="lightbox-content"></div>
     `;
   document.body.appendChild(lightbox);
@@ -29,8 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
     "res-11": ["minimalist-stretch-ceiling-led-lighting-foyer-FortLauderdale,Florida.jpg", "minimalist-stretch-ceiling-led-lighting-foyer-hollywood-fl.jpg"],
     "res-12": ["videos/custom-entryway-stretch-ceiling-recessed-lighting-fort-lauderdale.mp4", "custom-entryway-stretch-ceiling-recessed-lighting-fort-lauderdale.jpg", "res94.jpg"],
 
-    "com-1": ["com11.jpg"],
-    "com-2": ["com22.jpg", "com23.jpg"],
+    "com-1": ["commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale.jpg",'commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale-florida-holywood.jpg','commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale-florida.jpg','commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale-south-florida.jpg','commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale-florida-miami.jpg'],
+    "com-2": ["reflective-mirror-stretch-ceiling-aventura-condo-interior.jpg", "reflective-mirror-stretch-ceiling-aventura-condo-interior-south-florida.jpg",'reflective-mirror-stretch-ceiling-aventura-condo-interior-florida.jpg'],
+    "com-3":  ["commercial-conference-room-backlit-stretch-ceiling-coral-gables.jpg", "commercial-conference-room-backlit-stretch-ceiling-coral-gables-florida.jpg"],
+    "com-4": ["commercial-high-gloss-linear-led-ceiling-boca-raton.jpg", "commercial-high-gloss-linear-led-ceiling-boca-raton-miami.jpg"],
+    "com-5": ["luxury-garage-black-mirror-stretch-ceiling-sunny-isles-beach.jpg", "luxury-garage-black-mirror-stretch-ceiling-sunny-isles-beach-florida.jpg",'luxury-garage-black-mirror-stretch-ceiling-sunny-isles-beach-miami.jpg'],
+    'com-6':['commercial-gym-black-stretch-ceiling-lighting-miami.jpg','commercial-gym-black-stretch-ceiling-lighting-Florida-miami.jpg','commercial-gym-black-stretch-ceiling-lighting-florida.jpg','commercial-gym-black-stretch-ceiling-lighting-miami-florida.jpg','commercial-gym-black-stretch-ceiling-lighting-miami-south-florida.jpg','commercial-gym-black-stretch-ceiling-lighting-miami.jpg','commercial-gym-black-stretch-ceiling-lighting-miami-southflorida.jpg','commercial-gym-black-stretch-ceiling-lighting-miamiflorida.jpg'],
     'ren-1': ['printed-nature-stretch-ceiling-orlando-residentialhollywood-fl.jpg','printed-nature-stretch-ceiling-orlando-residentialfort-lauderdale-fl.jpg', 'printed-nature-stretch-ceiling-orlando-residentialhollywood-fl.jpg'],
    'ren-2': ['luxury-bathroom-stretch-ceiling-lighting-fort-lauderdale.jpg', 'luxury-bathroom-stretch-ceiling-lighting-fort-lauderdalehollywood-florida.jpg','luxury-high-rise-stretch-ceiling-lighting-miami-beach2.jpg'],
    'ren-3': ['modern-minimalist-kitchen-stretch-ceiling-naples-fl.jpg', 'modern-stretch-ceiling-integrated-led-lighting-Orlando,Florida1.jpg', 'modern-stretch-ceiling-integrated-led-lighting-Tampa,Florida1.jpg'],
@@ -41,7 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
    "pb-1": ['custom-sky-stretch-ceiling-luxury-home-south-florida..jpg'],
     "pb-2": ["printed-sky-stretch-ceiling-residential-miami-florida.jpg"],
     'pb-3': ["backlit-printed-minimalist-loft-ceiling-orlando-florida.jpg",'backlit-printed-minimalist-loft-ceiling-orlando-southFlorida.jpg','backlit-printed-minimalist-loft-ceiling-orlando-miami.jpg'],
-    'pb-4': ["printed-sky-stretch-ceiling-commercial-south-florida.jpg",'printed-sky-stretch-ceiling-commercial-florida-miami.jpg','printed-sky-stretch-ceiling-commercial-south-florida-miami.jpg']
+    'pb-4': ["printed-sky-stretch-ceiling-commercial-south-florida.jpg",'printed-sky-stretch-ceiling-commercial-florida-miami.jpg','printed-sky-stretch-ceiling-commercial-south-florida-miami.jpg'],
+    'pb-5': ['videos/starry-sky-led-stretch-ceiling-luxury.mp4'],
+    'pb-6': ['starry-sky-led-stretch-ceiling-luxury-pool-south-florida.jpg'],
 
   };
 
