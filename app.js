@@ -36,18 +36,70 @@ document.addEventListener("DOMContentLoaded", () => {
    'ren-3': ['modern-minimalist-kitchen-stretch-ceiling-naples-fl.jpg', 'modern-stretch-ceiling-integrated-led-lighting-Orlando,Florida1.jpg', 'modern-stretch-ceiling-integrated-led-lighting-Tampa,Florida1.jpg'],
    'ren-4': ['minimalist-bedroom-stretch-ceiling-boca-raton-fl.jpg', 'minimalist-bedroom-stretch-ceiling-Orlando,Florida1.jpg', 'minimalist-bedroom-stretch-ceiling-boca-raton-florida.jpg'],
     'ren-5': ['modern-geometric-linear-stretch-ceiling-lighting-hollywood-fl.jpg', 'modern-geometric-linear-stretch-ceiling-lighting-hollywood-florida.jpg', 'modern-geometric-linear-stretch-ceiling-lighting-Tampa,Florida1.jpg','modern-geometric-linear-stretch-ceiling-lighting-Orlando,Florida1.jpg', 'modern-geometric-linear-stretch-ceiling-lighting-hollywood-florida2.jpg'],
-   'ren-6': ['luxury-staircase-linear-led-stretch-ceiling-miami.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-florida1.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-florida.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-fl1.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-fl.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-fl..jpg','open-concept-stretch-ceiling-linear-lighting-holywood.jpg','open-concept-stretch-ceiling-linear-lighting-south-florida.jpg'],
-   'ren-9': ['videos/vibrant-red-led-accent-stretch-ceiling-miami-nightlife.MP4','vibrant-red-led-accent-stretch-ceiling-miami-nightlife.jpg', 'Geometric LED ceiling design in modern living room.png','videos/remote-controlled cilling-lights.mp4'],
-   "pb-1": ["pb1.jpg"],
-    "pb-2": ["pb2.jpg"],
+   'ren-6': ['luxury-staircase-linear-led-stretch-ceiling-miami.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-florida1.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-florida.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-fl1.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-fl.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-fl..jpg','open-concept-stretch-ceiling-linear-lighting-holywood.jpg','open-concept-stretch-ceiling-linear-lighting-south-florida.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-florida_.jpg'],
+   'ren-7': ['free-3d-rendering-minimalist-loft-ceiling-orlando.jpg', 'free-3d-rendering-minimalist-loft-ceiling-orlando-southFlorida.jpg','free-3d-rendering-minimalist-loft-ceiling-orlando-south-florida.jpg','free-3d-rendering-minimalist-loft-ceiling-orlando-miami.jpg','free-3d-rendering-minimalist-loft-ceiling-orlando-miami.jpg','free-3d-rendering-minimalist-loft-ceiling-orlando-miami-south-florida.jpg','free-3d-rendering-minimalist-loft-ceiling-orlando-south-florida.jpg','free-3d-rendering-minimalist-loft-ceiling-orlando-miami.jpg','free-3d-rendering-minimalist-loft-ceiling-orlando-florida.jpg'],
+   "pb-1": ['custom-sky-stretch-ceiling-luxury-home-south-florida..jpg'],
+    "pb-2": ["printed-sky-stretch-ceiling-residential-miami-florida.jpg"],
+    'pb-3': ["backlit-printed-minimalist-loft-ceiling-orlando-florida.jpg",'backlit-printed-minimalist-loft-ceiling-orlando-southFlorida.jpg','backlit-printed-minimalist-loft-ceiling-orlando-miami.jpg'],
+    'pb-4': ["printed-sky-stretch-ceiling-commercial-south-florida.jpg",'printed-sky-stretch-ceiling-commercial-florida-miami.jpg','printed-sky-stretch-ceiling-commercial-south-florida-miami.jpg']
+
   };
 
   gridItems.forEach((item) => {
     item.addEventListener("click", () => {
       const projectId = item.getAttribute("data-project");
       const images = projects[projectId] || [];
+      const mainImg = item.querySelector("img, video");
+      const altText = mainImg ? (mainImg.alt || mainImg.getAttribute("aria-label") || "") : "";
+      
+      // Helper to generate SEO content dynamically
+      const generateSEOContent = (id, alt) => {
+        const cities = ["Miami", "Fort Lauderdale", "Hollywood", "Tampa", "Orlando", "Boca Raton", "West Palm Beach"];
+        const city = cities.find(c => alt.includes(c)) || "South Florida";
+        let type = alt.toLowerCase().includes("commercial") ? "Commercial" : "Residential";
+        
+        // Detect if it's a rendering project
+        const isRendering = id.startsWith("ren-");
+        
+        // Clean up alt text for title
+        let baseTitle = alt.split(".")[0].split("—")[0].split(";")[0].trim();
+        
+        // Construct a strong SEO title
+        let title = baseTitle;
+        
+        // Ensure "Stretch Ceiling" is in the title
+        if (!title.toLowerCase().includes("stretch ceiling")) {
+          title = `${title} Stretch Ceiling`.trim();
+        }
 
-      lightboxContent.innerHTML = "";
+        // Add Rendering keyword if applicable
+        if (isRendering && !title.toLowerCase().includes("rendering")) {
+          title = `3D Rendering: ${title}`;
+        }
+        
+        // Ensure city is in the title
+        if (!title.includes(city) && city !== "South Florida") {
+          title += ` — ${city}`;
+        } else if (!title.includes("Florida") && !title.includes("FL")) {
+          title += ` — ${city}`;
+        }
+
+        const description = `${alt}. We specialize in high-end, custom ${type.toLowerCase()} stretch ceilings ${isRendering ? "renderings and installations" : "installations"} across ${city} and the entire state of Florida. Our unique architectural solutions bring a modern, minimalist aesthetic to any space. We also offer free custom 3D renderings to help you visualize your project before installation.`;
+
+        return { title, description };
+      };
+
+      const seo = generateSEOContent(projectId, altText);
+
+      lightboxContent.innerHTML = `
+        <div class="lightbox-gallery"></div>
+        <div class="lightbox-info">
+          <h3 class="lightbox-title">${seo.title}</h3>
+          <p class="lightbox-description">${seo.description}</p>
+        </div>
+      `;
+
+      const galleryContainer = lightboxContent.querySelector(".lightbox-gallery");
 
       if (images.length > 0) {
         images.forEach((src) => {
@@ -65,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const videoSrc = src.includes("/") ? src : `videos/${src}`;
             itemDiv.innerHTML = `<video src="${videoSrc}" controls muted playsinline autoplay loop></video>`;
             // Constrain the 9th residential project's video so it matches image sizing
-            if (projectId === "res-12" || projectId === "ren-9" || projectId === "res-8") {
+            if (projectId === "res-12" || projectId === "res-8") {
               itemDiv.classList.add("constrained-video");
             }
           } else {
@@ -73,14 +125,14 @@ document.addEventListener("DOMContentLoaded", () => {
             itemDiv.innerHTML = `<img src="${imgSrc}" alt="Project View">`;
           }
 
-          lightboxContent.appendChild(itemDiv);
+          galleryContainer.appendChild(itemDiv);
         });
       } else {
         // If no images set, just show placeholders representing multiple views
         for (let i = 0; i < 3; i++) {
           const placeholder = document.createElement("div");
           placeholder.className = "lightbox-item";
-          lightboxContent.appendChild(placeholder);
+          galleryContainer.appendChild(placeholder);
         }
       }
 
