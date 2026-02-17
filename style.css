@@ -60,11 +60,21 @@ a {
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.21em;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   color: #807777;
   text-transform: uppercase;
 }
-.logo span {
+
+.logo img {
+  height: 80px; /* Increased from 60px for better desktop visibility */
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+.light-highlight{
+  color: #7b6464;
+}
+.highlight {
   color: #000;
 }
 
@@ -75,6 +85,11 @@ a {
   line-height: 1.5;
   max-width: 180px;
 }
+.tagline span{
+  font-weight: 600;
+  color: #000 !important;
+}
+
 
 .phone {
   font-size: 0.8rem;
@@ -233,10 +248,10 @@ a {
 }
 
 .hero-title {
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   line-height: 1.1;
   color: #000;
   text-transform: uppercase;
@@ -466,9 +481,12 @@ a {
   }
 
   .logo {
-    font-size: 1.1rem;
     margin-bottom: 0;
-    letter-spacing: 0.15em;
+  }
+
+  .logo img {
+    height: 40px; /* Smaller for mobile sticky header */
+    width: auto;
   }
 
   .tagline,
@@ -556,9 +574,13 @@ a {
     margin-bottom: 60px;
   }
 
+  .hero-logo {
+    margin-bottom: 20px;
+    justify-content: flex-start;
+  }
+
   .hero-title {
     font-size: 2.2rem;
-    letter-spacing: 0.1em;
     margin-bottom: 20px;
   }
 
