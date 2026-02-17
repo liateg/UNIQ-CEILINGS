@@ -42,6 +42,7 @@ a {
   z-index: 1000;
   overflow-y: auto;
   scrollbar-width: thin;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sidebar-content {
@@ -56,12 +57,15 @@ a {
 }
 
 .logo {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.21em;
   margin-bottom: 20px;
-  color: #000;
+  color: #807777;
   text-transform: uppercase;
+}
+.logo span {
+  color: #000;
 }
 
 .tagline {
@@ -76,6 +80,53 @@ a {
   font-size: 0.8rem;
   font-weight: 400;
   color: #333;
+}
+.phone a {
+  text-decoration: none;
+  color: black;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* space between icon and number */
+}
+
+.phone-icon {
+  font-size: 16px;
+  filter: grayscale(100%) brightness(0); /* makes emoji black */
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1100;
+  flex-direction: column;
+  gap: 6px;
+  position: absolute;
+  top: 35px;
+  right: 20px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: #000;
+  transition: all 0.3s ease;
+}
+
+.sidebar.active .menu-toggle span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.sidebar.active .menu-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.sidebar.active .menu-toggle span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 .nav-menu {
@@ -162,6 +213,42 @@ a {
 
 .content-header {
   margin-bottom: 80px;
+}
+
+/* Hero Section */
+.hero-section {
+  display: none; /* Hidden on desktop */
+  margin-bottom: 120px;
+  max-width: 900px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: hero-fade-in 1s ease forwards 0.2s;
+}
+
+@keyframes hero-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title {
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 30px;
+  line-height: 1.1;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.hero-tagline {
+  font-size: 1.25rem;
+  color: #666;
+  line-height: 1.6;
+  max-width: 700px;
+  font-weight: 300;
+  margin-bottom: 20px;
 }
 
 .page-title {
@@ -348,30 +435,101 @@ a {
   }
 
   .sidebar {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
+    height: 80px;
     border-right: none;
     border-bottom: 1px solid #e5e5e5;
+    background-color: #fcfcfc;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
   }
 
   .sidebar-content {
-    padding: 40px 30px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
   .top-section {
-    margin-bottom: 40px;
+    height: 80px;
+    padding: 0 30px;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    letter-spacing: 0.15em;
+  }
+
+  .tagline,
+  .sidebar .phone {
+    display: none;
   }
 
   .nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 40px 30px;
+    background-color: #fcfcfc;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .bottom-section {
+    display: none;
+    padding: 20px 30px 40px;
+    margin-top: 0;
+    background-color: #fcfcfc;
+  }
+
+  .sidebar.active {
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .sidebar.active .nav-menu,
+  .sidebar.active .bottom-section {
     display: flex;
-    flex-direction: row;
-    gap: 60px;
-    flex-wrap: wrap;
+  }
+  
+  .sidebar.active .top-section {
+      flex-direction: column;
+      align-items: flex-start;
+      height: auto;
+      padding-top: 80px; /* offset for logo staying in place */
+      position: relative;
+  }
+  
+  .sidebar.active .logo {
+      position: absolute;
+      top: 25px;
+      left: 30px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    top: 20px;
+    right: 30px;
   }
 
   .content-area {
     margin-left: 0;
+    padding-top: 140px; /* offset for sticky header */
+  }
+
+  .hero-section {
+    display: block; /* Show on mobile */
   }
 
   .lightbox {
@@ -394,6 +552,20 @@ a {
     gap: 30px;
   }
 
+  .hero-section {
+    margin-bottom: 60px;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+  }
+
   .page-title {
     font-size: 1.8rem;
     letter-spacing: 0.2em;
@@ -404,7 +576,7 @@ a {
   }
 
   .content-area {
-    padding: 40px 20px;
+    padding: 120px 20px 40px 20px; /* Preserve top offset for sticky header */
   }
 
   .lightbox-gallery {
