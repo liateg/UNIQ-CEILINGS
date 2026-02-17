@@ -46,7 +46,7 @@ a {
 }
 
 .sidebar-content {
-  padding: 60px 40px 60px 40px;
+  padding: 10px 40px 60px 40px;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -79,11 +79,11 @@ a {
 }
 
 .tagline {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   color: #888;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   line-height: 1.5;
-  max-width: 180px;
+  max-width: 200px;
 }
 .tagline span{
   font-weight: 600;
@@ -92,7 +92,7 @@ a {
 
 
 .phone {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 400;
   color: #333;
 }
@@ -150,7 +150,7 @@ a {
 
 .primary-links {
   list-style: none;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .nav-section {
@@ -159,7 +159,7 @@ a {
 
 .section-label {
   display: block;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   color: #aaa;
@@ -173,9 +173,9 @@ a {
 }
 
 .nav-link {
-  font-size: 0.85rem;
+  font-size: 1rem;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-weight: 400;
   color: #888;
 }
