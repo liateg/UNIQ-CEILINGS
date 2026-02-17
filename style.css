@@ -34,7 +34,7 @@ a {
 
 /* Sidebar Styling */
 .sidebar {
-  width: 280px;
+  width: 320px;
   background-color: #fcfcfc;
   position: fixed;
   height: 100vh;
@@ -66,7 +66,7 @@ a {
 }
 
 .logo img {
-  height: 80px; /* Increased from 60px for better desktop visibility */
+  height: 90px; /* Increased for better visibility */
   width: auto;
   display: block;
   object-fit: contain;
@@ -79,11 +79,11 @@ a {
 }
 
 .tagline {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: #888;
   margin-bottom: 20px;
   line-height: 1.5;
-  max-width: 200px;
+  max-width: 240px;
 }
 .tagline span{
   font-weight: 600;
@@ -92,7 +92,7 @@ a {
 
 
 .phone {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 400;
   color: #333;
 }
@@ -159,7 +159,7 @@ a {
 
 .section-label {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   color: #aaa;
@@ -173,7 +173,7 @@ a {
 }
 
 .nav-link {
-  font-size: 1rem;
+  font-size: 1.15rem;
   display: block;
   margin-bottom: 12px;
   font-weight: 400;
@@ -220,7 +220,7 @@ a {
 
 /* Main Content Area */
 .content-area {
-  margin-left: 280px;
+  margin-left: 320px;
   flex-grow: 1;
   padding: 80px 100px;
   max-width: 1600px;
