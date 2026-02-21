@@ -14,12 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Sample project data (can be expanded)
   const projects = {
     "res-1": ["residential-stretch-ceiling-kids-room-miami-florida.jpg", "residential-stretch-ceiling-kids-room-Fort-Lauderdale,Florida.jpg", "residential-stretch-ceiling-kids-room-Fort-Lauderdale,FloridaOrlando,Florida.jpg"],
-    "res-2": ["modern-residential-stretch-ceiling-led-living-room-Boca-Raton,Florida.png", "modern-residential-stretch-ceiling-led-living-room-miami-floridaTampa,Florida.png", "luxury-high-rise-stretch-ceiling-lighting-miami-beach.jpg"],
-     "res-3": ["black-gloss-stretch-ceiling-hallway-lighting-tampa-fl.jpg", "black-gloss-stretch-ceiling-hallway-lighting-tampa-flOrlando,Florida.jpg"],
+    'res-2': ['luxury-staircase-linear-led-stretch-ceiling-miami.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-florida1.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-florida.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-fl1.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-fl.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-fl..jpg','open-concept-stretch-ceiling-linear-lighting-holywood.jpg','open-concept-stretch-ceiling-linear-lighting-south-florida.jpg','open-concept-stretch-ceiling-linear-lighting-tampa-florida_.jpg'],
+    'res-3': ['modern-matte-stretch-ceiling-led-linear-design-fort-lauderdale-south-florida.jpg','modern-matte-stretch-ceiling-led-linear-design-fort-lauderdale-south-florida-miami.jpg','modern-matte-stretch-ceiling-led-linear-design-fort-lauderdale-southflorida.jpg','modern-matte-stretch-ceiling-led-linear-design-fort-lauderdale-florida.jpg','modern-matte-stretch-ceiling-led-linear-design-fort-lauderdale-miami.jpg'],
+    
    
    'res-4': ['modern-hallway-stretch-ceiling-lighting-hollywood-fl.jpg','modern-hallway-stretch-ceiling-lighting-Orlando,Florida.jpg', 'modern-hallway-stretch-ceiling-lighting-hollywood-florida.jpg', 'modern-hallway-stretch-ceiling-lighting-hollywood-florida2.jpg','modern-hallway-stretch-ceiling-lighting-Orlando,FloridaOrlando,Florida.jpg','modern-hallway-stretch-ceiling-lighting-Orlando,FloridaOrlando,Florida1.jpg'],
    
-    "res-5": [ 'concentric-led-tiered-stretch-ceiling-tampa-residential.jpg','concentric-led-tiered-stretch-ceiling-tampa-residential..jpg', 'concentric-led-tiered-stretch-ceiling-tampa-residential1.jpg'],
+    "res-5": [ 'concentric-led-tiered-stretch-ceiling-tampa-residential.jpg','concentric-led-tiered-stretch-ceiling-tampa-residential..jpg'],
     
     // 'res-6': ['black-gloss-stretch-ceiling-led-lighting-miami-residential.jpg', "geometric-black-gloss-stretch-ceiling-kitchen-lighting-fort-lauderdale.jpg", "geometric-black-gloss-stretch-ceiling-kitchen-lighting-fort-Boca-Raton,Florida.jpg",'vibrant-red-led-accent-stretch-ceiling-miami-nightlife.jpg', 'Geometric LED ceiling design in modern living room.png'],
      'res-6': ['high-gloss-black-stretch-ceiling-miami-residential-living-room.jpg', "modern-foyer-stretch-ceiling-linear-led-hollywood-fl.jpg"],
@@ -28,10 +29,18 @@ document.addEventListener("DOMContentLoaded", () => {
      "res-7": ["black-gloss-stretch-ceiling-staircase-design-tampa-fl.jpg", "black-gloss-stretch-ceiling-staircase-design-hollywood-fl.jpg"],
     "res-8": ['modern-organic-curve-stretch-ceiling-design-fort-lauderdale.jpg'],
     
-     "res-9": ["modern-stretch-ceiling-integrated-led-lighting-miami-fl.jpg", "modern-stretch-ceiling-integrated-led-lighting-Tampa,Florida.jpg", "modern-stretch-ceiling-integrated-led-lighting-Orlando,Florida.jpg"],
-   'res-10':['high-gloss-mirrored-stretch-ceiling-miami-residential.jpg','high-gloss-mirrored-stretch-ceiling-miami-residential-florida.jpg'],
-   'res-11':['high-gloss-mirrored-stretch-ceiling-miami-residential-living-room.jpg','high-gloss-mirrored-stretch-ceiling-miami-residential-living-room-south-florida.png','high-gloss-mirrored-stretch-ceiling-miami-residential-living-room-miami.jpg'],
-    "com-1": ["commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale.jpg",'commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale-florida-holywood..jpg','commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale-florida-holywood.jpg','commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale-florida.jpg','commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale-south-florida.jpg','commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale-florida-miami.jpg'],
+      "resg-1": ["modern-residential-stretch-ceiling-led-living-room-Boca-Raton,Florida.png", "modern-residential-stretch-ceiling-led-living-room-miami-floridaTampa,Florida.png", "luxury-high-rise-stretch-ceiling-lighting-miami-beach.jpg"],
+     "resg-2": ["black-gloss-stretch-ceiling-hallway-lighting-tampa-fl.jpg", "black-gloss-stretch-ceiling-hallway-lighting-tampa-flOrlando,Florida.jpg"],
+   "resg-3": ["high-gloss-stretch-ceiling-led-perimeter-lighting-boca-raton-south-florida.jpg",'high-gloss-stretch-ceiling-led-perimeter-lighting-boca-raton-south-florida-miami.jpg'],
+   "resg-4": ["gloss-stretch-ceiling-circular-led-design-sunny-isles-beach-south-florida.jpg",'black-gloss-stretch-ceiling-staircase-design-tampa-fl.jpg', 'concentric-led-tiered-stretch-ceiling-tampa-residential1.jpg'],
+   "resg-5": ["modern-stretch-ceiling-integrated-led-lighting-miami-fl.jpg", "modern-stretch-ceiling-integrated-led-lighting-Tampa,Florida.jpg", "modern-stretch-ceiling-integrated-led-lighting-Orlando,Florida.jpg"],
+   "resg-6":['high-gloss-mirrored-stretch-ceiling-miami-residential.jpg','high-gloss-mirrored-stretch-ceiling-miami-residential-florida.jpg'],
+   "resg-7":["high-gloss-mirrored-stretch-ceiling-miami-residential-living-room.jpg","high-gloss-mirrored-stretch-ceiling-miami-residential-living-room-south-florida.png","high-gloss-mirrored-stretch-ceiling-miami-residential-living-room-miami.jpg"],
+   
+   'resc-1': ['high-gloss-black-stretch-ceiling-miami-residential-living-room.jpg', "modern-foyer-stretch-ceiling-linear-led-hollywood-fl.jpg"],
+    'resc-2': ['modern-foyer-stretch-ceiling-linear-led-hollywood-fl.jpg'],
+    'resc-3': ['black-gloss-stretch-ceiling-staircase-design-tampa-fl.jpg'],
+   "com-1": ["commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale.jpg",'commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale-florida-holywood..jpg','commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale-florida-holywood.jpg','commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale-florida.jpg','commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale-south-florida.jpg','commercial-backlit-stretch-ceiling-boardroom-fort-lauderdale-florida-miami.jpg'],
     "com-2": ["reflective-mirror-stretch-ceiling-aventura-condo-interior.jpg", "reflective-mirror-stretch-ceiling-aventura-condo-interior-south-florida.jpg",'reflective-mirror-stretch-ceiling-aventura-condo-interior-florida.jpg'],
     "com-3":  ["commercial-conference-room-backlit-stretch-ceiling-coral-gables.jpg", "commercial-conference-room-backlit-stretch-ceiling-coral-gables-florida.jpg"],
     "com-4": ["commercial-high-gloss-linear-led-ceiling-boca-raton.jpg", "commercial-high-gloss-linear-led-ceiling-boca-raton-miami.jpg"],
