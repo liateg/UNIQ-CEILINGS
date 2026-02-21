@@ -66,10 +66,11 @@ a {
 }
 
 .logo img {
-  height: 90px; /* Increased for better visibility */
+  height: 100px; /* Increased for better visibility */
   width: auto;
   display: block;
   object-fit: contain;
+  margin: 10px;
 }
 .light-highlight{
   color: #7b6464;
@@ -173,7 +174,7 @@ a {
 }
 
 .nav-link {
-  font-size: 1rem;
+  font-size: 1.15rem;
   display: block;
   margin-bottom: 12px;
   font-weight: 400;
