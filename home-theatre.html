@@ -53,6 +53,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preload" href="images/logo.png" as="image" fetchpriority="high" />
   </head>
 
   <body>
@@ -65,7 +66,7 @@
         </button>
         <div class="sidebar-content">
           <div class="top-section">
-            <div class="logo"><img src="images/logo.png" alt="UNIQ-CEILINGS Logo"></div>
+            <div class="logo"><img src="images/logo.png" alt="UNIQ-CEILINGS Logo" fetchpriority="high" decoding="async"></div>
             <p class="tagline">
               <span>UNIQ</span>-CEILINGS specializes in premium architectural ceiling
               solutions, delivering minimalist, high-end stretch ceilings for
@@ -253,6 +254,8 @@
 
           <div class="grid-item" data-project="resh-7">
                 <img
+              loading="lazy"
+              decoding="async"
               src="images/home-theater-matte-stretch-ceiling-linear-led-design-luxury-miami-florida-south-florida.webp"
               alt="Luxury home theater featuring a matte stretch ceiling with integrated linear LED lighting and soft perimeter illumination. Modern Miami residential cinema room with minimalistic acoustic wall panels and premium South Florida custom ceiling design."
             />

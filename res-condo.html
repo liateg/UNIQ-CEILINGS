@@ -53,6 +53,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preload" href="images/logo.png" as="image" fetchpriority="high" />
   </head>
 
   <body>
@@ -65,7 +66,7 @@
         </button>
         <div class="sidebar-content">
           <div class="top-section">
-            <div class="logo"><img src="images/logo.png" alt="UNIQ-CEILINGS Logo"></div>
+            <div class="logo"><img src="images/logo.png" alt="UNIQ-CEILINGS Logo" fetchpriority="high" decoding="async"></div>
             <p class="tagline">
               <span>UNIQ</span>-CEILINGS specializes in premium architectural ceiling
               solutions, delivering minimalist, high-end stretch ceilings for
@@ -242,6 +243,8 @@
          
          <div class="grid-item" data-project="resc-4">
                 <img
+              loading="lazy"
+              decoding="async"
               src="images/gloss-stretch-ceiling-perimeter-led-luxury-condo-living-room-miami-beach-south-florida.jpg"
               alt="Modern matte stretch ceiling with custom geometric LED lighting installed in a luxury Miami bayfront condominium living room. High‑rise South Florida interior featuring panoramic water views, contemporary design, and premium custom ceiling architecture."
             />
@@ -254,6 +257,8 @@
           
           <div class="grid-item" data-project="resc-3">
                 <img
+              loading="lazy"
+              decoding="async"
               src="images/black-gloss-stretch-ceiling-staircase-design-tampa-fl.jpg"
               alt="Modern residential interior featuring a dark glossy stretch ceiling with linear light tracks installed above a contemporary wood staircase. Custom ceiling installation serving Tampa and West Palm Beach."
             />

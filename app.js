@@ -307,7 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           } else {
             const imgSrc = src.includes("/") ? src : `images/${src}`;
-            itemDiv.innerHTML = `<img src="${imgSrc}" alt="Project View">`;
+            itemDiv.innerHTML = `<img src="${imgSrc}" alt="Project View" loading="lazy" decoding="async">`;
           }
 
           galleryContainer.appendChild(itemDiv);
