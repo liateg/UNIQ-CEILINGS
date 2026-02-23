@@ -124,50 +124,163 @@ document.addEventListener("DOMContentLoaded", () => {
       const mainImg = item.querySelector("img, video");
       const altText = mainImg ? (mainImg.alt || mainImg.getAttribute("aria-label") || "") : "";
       
-      // Helper to generate SEO content dynamically
-      const generateSEOContent = (id, alt) => {
-        const cities = ["Miami", "Fort Lauderdale", "Hollywood", "Tampa", "Orlando", "Boca Raton", "West Palm Beach"];
+      // Helper to generate captive, SEO-friendly content dynamically
+      const generateSEOContent = (id, alt, category) => {
+        const cities = ["Miami Beach", "Miami", "Fort Lauderdale", "Hollywood", "Tampa", "Orlando", "Boca Raton", "West Palm Beach", "Coral Gables", "Aventura", "Sunny Isles", "Naples", "Brickell"];
         const city = cities.find(c => alt.includes(c)) || "South Florida";
-        let type = alt.toLowerCase().includes("commercial") ? "Commercial" : "Residential";
-        
-        // Detect if it's a rendering project
-        const isRendering = id.startsWith("ren-");
-        
-        // Clean up alt text for title
-        let baseTitle = alt.split(".")[0].split("—")[0].split(";")[0].trim();
-        
-        // Construct a strong SEO title
-        let title = baseTitle;
-        
-        // Ensure "Stretch Ceiling" is in the title
-        if (!title.toLowerCase().includes("stretch ceiling")) {
-          title = `${title} Stretch Ceiling`.trim();
+        const type = alt.toLowerCase().includes("commercial") ? "Commercial" : "Residential";
+        const isRendering = id.startsWith("ren-") || alt.toLowerCase().includes("rendering");
+
+        // Clean up category name (e.g., "Residential Matte Ceillings" -> "Matte")
+        let categoryContext = category.replace("Residential", "").replace("Ceilings", "").replace("Ceillings", "").trim();
+        // Special case for Condominiums
+        if (category.toLowerCase().includes("condo")) categoryContext = "Condo";
+        if (category.toLowerCase().includes("theatre")) categoryContext = "Home Theatre";
+        if (category.toLowerCase().includes("backlit")) categoryContext = "Printed Backlit";
+        if (category.toLowerCase().includes("render")) categoryContext = "3D Rendering";
+        if (category.toLowerCase().includes("commercial")) categoryContext = "Commercial";
+
+        // Key architectural & product descriptors
+        const keywords = ["Matte", "Gloss", "Backlit", "Printed", "LED", "Linear", "Perimeter", "Curved", "Geometric", "Mirrored", "Acoustic", "Starry Sky", "Sky", "Cloud"];
+        // Common areas/rooms
+        const areas = ["Kitchen", "Living", "Dining", "Bedroom", "Bathroom", "Hallway", "Foyer", "Entryway", "Gym", "Office", "Conference", "Boardroom", "Pool", "Spa", "Lobby", "Bar", "Cinema", "Theater", "Staircase", "Garage", "Showroom", "Condo", "Penthouse"];
+
+        const foundKeywords = keywords.filter(k => alt.toLowerCase().includes(k.toLowerCase()));
+        const foundArea = areas.find(a => alt.toLowerCase().includes(a.toLowerCase())) || "";
+
+        let displayTitle = "";
+        if (foundKeywords.length > 0) {
+          // Take top 2 keywords + area
+          displayTitle = `${foundKeywords.slice(0, 2).join(" ")} ${foundArea}`.trim();
+        } else {
+          displayTitle = foundArea || (type === "Commercial" ? "Commercial Interior" : "Residential Interior");
         }
 
-        // Add Rendering keyword if applicable
-        if (isRendering && !title.toLowerCase().includes("rendering")) {
-          title = `3D Rendering: ${title}`;
+        // Add category context to title if not already present
+        if (categoryContext && !displayTitle.toLowerCase().includes(categoryContext.toLowerCase())) {
+          displayTitle = `${categoryContext}: ${displayTitle}`;
+        }
+
+        if (isRendering && !displayTitle.toLowerCase().includes("rendering")) {
+          displayTitle = `Concept: ${displayTitle}`;
+        }
+
+        // Final captive title: "Short Description | City"
+        const title = `${displayTitle} | ${city}`;
+
+        // Determine dynamic badges based on content
+        let badge1Text = type.toUpperCase();
+        let badge1Icon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`; // Default Home icon for Residential
+        
+        if (type.toLowerCase() === "commercial") {
+          badge1Icon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="22"/><line x1="15" y1="22" x2="15" y2="22"/><line x1="12" y1="6" x2="12" y2="6"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="12" y1="18" x2="12" y2="18"/></svg>`;
+        }
+
+        if (foundKeywords.includes("Backlit") || foundKeywords.includes("Printed")) {
+          badge1Text = "PRINTED BACKLIT";
+          badge1Icon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`;
+        } else if (foundKeywords.includes("Gloss")) {
+          badge1Text = "GLOSS DESIGN";
+          badge1Icon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`;
+        } else if (foundKeywords.includes("Matte")) {
+          badge1Text = "MATTE FINISH";
+          badge1Icon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`;
         }
         
-        // Ensure city is in the title
-        if (!title.includes(city) && city !== "South Florida") {
-          title += ` — ${city}`;
-        } else if (!title.includes("Florida") && !title.includes("FL")) {
-          title += ` — ${city}`;
-        }
+        const badge1 = {
+          text: badge1Text,
+          icon: badge1Icon
+        };
+        const badge2 = {
+          text: "MODERN AESTHETIC",
+          icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg>`
+        };
 
         const description = `${alt}. We specialize in high-end, custom ${type.toLowerCase()} stretch ceilings ${isRendering ? "renderings and installations" : "installations"} across ${city} and the entire state of Florida. Our unique architectural solutions bring a modern, minimalist aesthetic to any space. We also offer free custom 3D renderings to help you visualize your project before installation.`;
 
-        return { title, description };
+        return { title, description, badges: [badge1, badge2] };
       };
 
-      const seo = generateSEOContent(projectId, altText);
+      const activeNavLink = document.querySelector(".nav-link.active");
+      const categoryName = activeNavLink ? activeNavLink.textContent.trim() : "";
+
+      const seo = generateSEOContent(projectId, altText, categoryName);
 
       lightboxContent.innerHTML = `
         <div class="lightbox-gallery"></div>
         <div class="lightbox-info">
           <h3 class="lightbox-title">${seo.title}</h3>
+          
+          <div class="lightbox-badges">
+            ${seo.badges.map(badge => `
+              <div class="badge-item">
+                <span class="badge-icon">${badge.icon}</span>
+                <span class="badge-text">${badge.text}</span>
+              </div>
+            `).join('')}
+          </div>
+
           <p class="lightbox-description">${seo.description}</p>
+          
+          <div class="lightbox-features">
+            <h4>Creative Lighting Solutions</h4>
+            <ul class="features-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="3"/></svg>
+                <span>Custom abstract geometric printed membrane</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span>High-efficiency integrated LED backlighting</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/><line x1="8" y1="16" x2="8.01" y2="16"/><line x1="8" y1="20" x2="8.01" y2="20"/><line x1="12" y1="18" x2="12.01" y2="18"/><line x1="12" y1="22" x2="12.01" y2="22"/><line x1="16" y1="16" x2="16.01" y2="16"/><line x1="16" y1="20" x2="16.01" y2="20"/></svg>
+                <span>Advanced light diffusion technology</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="10" y1="21" x2="14" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                <span>Durable architectural stretch framework</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Seamless and dust-resistant finish</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Professional Installation & Warranty</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="lightbox-footer">
+            <div class="social-icons">
+              <a href="#" class="social-icon" aria-label="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+              <a href="#" class="social-icon" aria-label="YouTube">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.14 1 12 1 12s0 3.86.42 5.58a2.78 2.78 0 0 0 1.94 2c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.86 23 12 23 12s0-3.86-.42-5.58z"></path>
+                  <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
+                </svg>
+              </a>
+              <a href="#" class="social-icon" aria-label="TikTok">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                </svg>
+              </a>
+               <a href="#" class="social-icon" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       `;
 

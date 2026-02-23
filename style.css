@@ -174,7 +174,7 @@ a {
 }
 
 .nav-link {
-  font-size: 1.15rem;
+  font-size: 0.95rem;
   display: block;
   margin-bottom: 12px;
   font-weight: 400;
@@ -387,26 +387,136 @@ a {
 
 .lightbox-info {
   width: 100%;
-  padding: 20px 0;
+  
+  padding: 40px 0;
   border-top: 1px solid #eee;
-  margin-top: 20px;
-  text-align: left;
+  margin-top: 5px;
+  text-align: center;
+  color: black;
 }
 
 .lightbox-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 15px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #7b6464;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: inline-block;
+  border-bottom: 1px solid #7b6464;
+  padding-bottom: 12px;
+}
+
+.lightbox-badges {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+}
+
+.badge-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: #000;
-  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
+.badge-icon {
+  display: flex;
+  align-items: center;
+  color: #666;
+}
+
 .lightbox-description {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
-  max-width: 800px;
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.8;
+  max-width: 750px;
+  margin: 0 auto;
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+.lightbox-features {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #eee;
+}
+
+.lightbox-features h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #000;
+  border-bottom: 1px solid #ddd;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 40px;
+  text-align: left;
+}
+
+.features-list li {
+  font-size: 0.95rem;
+  color: #444;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  line-height: 1.4;
+}
+
+.features-list li svg {
+  flex-shrink: 0;
+  color: #7b6464;
+}
+
+.features-list li span {
+  flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+  .features-list {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .lightbox-features {
+    padding: 30px 20px;
+  }
+}
+
+.lightbox-footer {
+  border-top: 1px solid #eee;
+  padding-top: 40px;
+  margin-top: 20px;
+}
+
+.lightbox-footer .social-icons {
+  justify-content: center;
+  margin-bottom: 0;
 }
 
 .lightbox-item {
