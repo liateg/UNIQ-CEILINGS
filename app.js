@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <div class="lightbox-footer">
             <div class="social-icons">
-              <a href="#" class="social-icon" aria-label="Instagram">
+              <a href="https://instagram.com/uniqceilings" target="_blank" class="social-icon" aria-label="Instagram">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
